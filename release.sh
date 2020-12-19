@@ -18,6 +18,16 @@ echo "-------------------------------------------------------------------------"
 git checkout develop
 git pull
 
+# Get current branch and checkout if needed
+branch=$(git show-ref $version)
+if [ -n "$branch"  ]; then
+  echo 'branch exists!'
+else
+  git branch $version 
+fi
+
+
+
 # Checkout release branch
 git checkout $version
 
